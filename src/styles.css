@@ -1,0 +1,122 @@
+:root { font-family: system-ui, Arial, sans-serif; }
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #0f0f0f url('./assets/back.png') center/cover fixed;
+  color: #f5f5f5;
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 16px; }
+.card { background: #fff; border: 1px solid #e6e6e6; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+.card img { width: 100%; height: 220px; object-fit: cover; display: block; }
+.card .body { padding: 12px; display: flex; align-items: center; justify-content: space-between; gap: 10px; color: #111; }
+.card .body strong { color: #111; }
+.badge { font-size: 12px; background: #111; color: #fff; padding: 4px 8px; border-radius: 999px; }
+.nav { background: #111; color: #fff; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.35); }
+.nav-inner {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 14px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand-logo { width: 44px; height: 44px; object-fit: contain; }
+.nav h1 { font-size: 20px; margin: 0; letter-spacing: .2px; color: #fff; }
+.brand-emoji {
+  font-size: 20px;
+  display: inline-flex;
+  animation: flip 2.4s linear infinite;
+}
+
+@keyframes flip {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}
+.search { width: 100%; max-width: 420px; flex: 1; }
+.search input { width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid #2a2a2a; background: #161616; color: #fff; outline: none; }
+.search input::placeholder { color: #bdbdbd; }
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+.actions .search { flex: 1 1 240px; }
+.actions .btn { flex: 0 0 auto; }
+.btn {
+  border: 1px solid #2a2a2a;
+  background: #1c1c1c;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.btn:hover { background: #242424; transform: translateY(-1px); }
+.btn.secondary { background: transparent; }
+
+.modal-backdrop {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2000;
+}
+.modal {
+  background: #111;
+  color: #fff;
+  padding: 22px;
+  border-radius: 12px;
+  width: min(340px, 92vw);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+  border: 1px solid #1f1f1f;
+}
+.modal h3 { margin: 0 0 12px; font-size: 18px; }
+.modal form { display: grid; gap: 10px; }
+.modal label { font-size: 13px; color: #cfcfcf; display: block; }
+.modal input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #2f2f2f;
+  background: #181818;
+  color: #fff;
+  outline: none;
+}
+.modal select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #2f2f2f;
+  background: #181818;
+  color: #fff;
+  outline: none;
+}
+.modal .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 6px; }
+.note { margin: 10px 0 2px; font-size: 13px; color: #d1d1d1; }
+.note.success { color: #70e38c; }
+.muted { color: #9a9a9a; font-size: 13px; margin: 6px 0; }
+.order-table { margin-top: 12px; }
+.order-table .table-head { font-size: 13px; margin-bottom: 6px; font-weight: 600; }
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th, .data-table td { padding: 8px 6px; border: 1px solid #1f1f1f; font-size: 12px; }
+.data-table th { background: #161616; text-align: left; color: #f5f5f5; }
+.data-table tbody tr:nth-child(even) { background: #131313; }
+
+@media (max-width: 720px) {
+  .nav-inner { flex-direction: column; align-items: stretch; }
+  .actions {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .search { max-width: none; width: 100%; }
+  .actions .btn { flex: 1 1 48%; text-align: center; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+}
